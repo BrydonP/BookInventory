@@ -23,8 +23,10 @@ public abstract class Search{
         }else if(searchType.equals("ISBN")){
             for(int i = 0; i < BookInventory.data.size(); i++){
                 if(BookInventory.data.get(i).getISBN().contains(searchKey)){
+                    System.out.println(BookInventory.data.get(0).getTitle());
                     index = i;
                     exists = true;
+                    break;
                 }
             }
         }else if(searchType.equals("Last Name")){
