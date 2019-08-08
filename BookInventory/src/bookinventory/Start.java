@@ -379,6 +379,7 @@ public class Start extends Application {
         if (!isbn.getText().equals("") && !noBooks.getText().equals("")) {
             admin.orderBook(Integer.parseInt(noBooks.getText()), isbn.getText());
             alertMessage("The book has been Ordered!");
+            adminLogIn();
         } else {
             badAlert("Order Info is not correct");
         }
@@ -403,15 +404,17 @@ public class Start extends Application {
                     Double.parseDouble(price.getText()),
                     Double.parseDouble(noCopies.getText()));
             alertMessage(title.getText() + " has been added to the library");
+            adminLogIn();
         } else {
-            badAlert("Somewhere info is empty");
+            badAlert("Some of the TextFields are empty");
         }
     }
 
     public void deleteBook(Admin admin, TextField isbn) {
         if (Search.searchData(isbn.getText(), "ISBN") == true) {
-            alertMessage("ISBN:"+isbn.getText()+"has been deleted");
+            alertMessage("ISBN:"+isbn.getText()+" has been deleted");
             admin.deleteBook(isbn.getText());
+            adminLogIn();
         } else {
             badAlert("ISBN not found!");
         }
